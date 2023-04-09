@@ -46,6 +46,22 @@ typedef struct _SCHOOL
  *  @}
  */
 
+typedef enum _CONDITION
+{
+    VERYGOOD = 0,
+    GOOD,
+    NORMAL,
+    BAD,
+    WORST
+}PERSON_CONDITION;
+
+typedef enum _STATE
+{
+    SLEEPING = 0, //TODO: CONDITION에 따라SLEEP TIME 결정 그리고 CONDITION UP
+    WORKING, //TODO: NORMAL에서 내려가지 않음
+    RESTING, //TODO: 휴식 중일 시 기분이 NORMAL이상 올라가지x
+    EATING   //TODO: 먹는 음식에 따라 CONDITION up
+}PERSON_STATE;
 
 typedef struct _QUESTION
 {
@@ -56,15 +72,15 @@ typedef struct _QUESTION
 class Person
 {
     private:
+	PERSON_CONDITION condition;
+	PERSON_STATE state; 
 	MBTI_INFO MBTI;
 	string myName;
 	int IQ;
-	int state; //TODO: state에 대한 정의 필요
 	int sleepTime;
 	int workTime;
 	int salary;
 	int company;
-	int condition;
 	int gradCard(school_info sch);
 
     public:
