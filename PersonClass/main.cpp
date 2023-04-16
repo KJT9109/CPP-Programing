@@ -7,10 +7,18 @@
 
 #include "person.h"
 
+int house()
+{
+    Person hyojin("hyojin Park", 33);
+    Person jitae("Jitae Kim", 33);
+    Person();
+
+    return 0;
+}
+
 
 int main()
 {
-    Person hyojin;
-    Person jitae;
+    house();
     return 0;
 }

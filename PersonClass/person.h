@@ -9,6 +9,7 @@
 #define __PEOPLE_H__
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 /*! MBTI Information */
@@ -58,10 +59,18 @@ typedef enum _CONDITION
 typedef enum _STATE
 {
     SLEEPING = 0, //TODO: CONDITION에 따라SLEEP TIME 결정 그리고 CONDITION UP
-    WORKING, //TODO: NORMAL에서 내려가지 않음
-    RESTING, //TODO: 휴식 중일 시 기분이 NORMAL이상 올라가지x
-    EATING   //TODO: 먹는 음식에 따라 CONDITION up
+    WORKING,      //TODO: NORMAL에서 내려가지 않음
+    RESTING,      //TODO: 휴식 중일 시 기분이 NORMAL이상 올라가지x
+    EATING,       //TODO: 먹는 음식에 따라 CONDITION up
+    MAXIMUM_PSTATE
 }PERSON_STATE;
+
+typedef struct _Status
+{
+    PERSON_STATE p_state;
+    string state_str;
+}Person_State;
+
 
 typedef struct _QUESTION
 {
@@ -77,17 +86,24 @@ class Person
 	MBTI_INFO MBTI;
 	string myName;
 	int IQ;
-	int sleepTime;
-	int workTime;
+	int age;
 	int salary;
 	int company;
+	int workTime;
+	int sleepTime;
 	int gradCard(school_info sch);
 
     public:
+	Person();
+	Person(string arg_name, int arg_age);
+	~Person();
+
 	int recv_question(question_info qst);
 	int trans_question(question_info qst, Person who);
 	int what_doing();
 	int what_todo();
 };
+
+#define NOT_USED(s)        (s = s)
 
 #endif
